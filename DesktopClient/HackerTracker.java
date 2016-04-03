@@ -17,7 +17,7 @@ import com.firebase.client.*;
 
 /*
  * Self-reported productivity timer
- * By: Jenny Wong
+ * By: Jenny Wong 
  */
 public class HackerTracker extends Application
 {
@@ -128,9 +128,11 @@ public class HackerTracker extends Application
                             String timestring = httime.getTime();
                             txt.setText(timestring);
                             httime.stop();
-                            fb.child("fromJava").setValue(true);
-                            fb.child("name").setValue(timerText);
-                            fb.child("time").setValue(timestring);
+                            
+                            Firebase fb2 = fb.push();
+                            fb2.child("fromJava").setValue(true);
+                            fb2.child("name").setValue(timerText);
+                            fb2.child("time").setValue(timestring);
 
                             });
 
