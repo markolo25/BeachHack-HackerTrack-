@@ -58,13 +58,17 @@ public class HackerTracker extends Application
 
         // Add first timer
         int num_timers = 1;
+        Text name = new Text("Sample");
         Text txt = new Text("0:00");
         Button startButton = new Button("Go");
         Button stopButton = new Button("Stop");
-        pane.add( txt, 0, 1 );
-        pane.add( startButton, 1, 1);
-        pane.add( stopButton, 2, 1);
+        pane.add( name, 0, 1 );
+        pane.add( txt, 1, 1 );
+        pane.add( startButton, 2, 1);
+        pane.add( stopButton, 3, 1);
 
+
+        // Add a timer button and text field
         Button addTimer = new Button("+");
         TextField timerName = new TextField();
         pane.add( addTimer, 2, num_timers +1);
@@ -76,16 +80,20 @@ public class HackerTracker extends Application
 
             int row = pane.getRowIndex(addTimer);
 
+            String timerText = timerName.getText();
+            
             pane.getChildren().remove(addTimer);
             pane.getChildren().remove(timerName);
 
+            Text txtname = new Text(timerText);
             Text txttime = new Text("0:00");
             Button start = new Button("Go");
             Button stop = new Button("Stop");
 
-            pane.add( txttime, 0, row );
-            pane.add( start, 1, row );
-            pane.add( stop, 2, row );
+            pane.add( txtname, 0, row );
+            pane.add( txttime, 1, row );
+            pane.add( start, 2, row );
+            pane.add( stop, 3, row );
 
             row++;
             pane.add( addTimer, 2, row );
