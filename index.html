@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+	<html>
+	<body bgcolor="#">
+
     <title>hacker tracker</title>
 
     <!-- Bootstrap -->
@@ -18,15 +22,9 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Hacker Tracker</h1>
-
-    <div class="myProgress.css">
-  <div class="progress-bar" role="progressbar" aria-valuenow="70"
-  aria-valuemin="0" aria-valuemax="100" style="width:50%">
-    70%
-  </div>
-</div>
-
+    <h1><font face="verdana" color="BLUE">Hacker Tracker</font></h1>
+	<!--<font size="3" color="red">This is some text!</font>-->
+   
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -42,13 +40,20 @@
         data.addColumn('number', 'TIME');
         /*data.addColumn('boolean', 'Full Time Employee');*/
         data.addRows([
-          ['Facebook.com',  {v: 10000, f: 'Github.com'}],
-          ['Reddit.com',   {v:8000,   f: 'Microsoft Word'}],
-          ['Match.com', {v: 12500, f: 'Eclipse'}],
-          ['SomePornSite.com',   {v: 7000,  f: 'Console'}]
+          ['Facebook.com',  {v: 10000, f: '160 minutes'}],
+          ['Reddit.com',   {v:8000,   f: '94 minutes'}],
+          ['Match.com', {v: 12500, f: '35 minutes'}],
+          ['SomePornSite.com',   {v: 7000,  f: '270 minutes'}]
         ]);
         var table = new google.visualization.Table(document.getElementById('table_div'));
-        table.draw(data, {showRowNumber: true, width: '50%', height: '100%'});
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+
+        
+
+		dataTable.setCell(22, 2, 15, 'Fifteen', {style: 'font-style:bold; font-size:22px;'})  
+
+		"background-color:lightgrey;"      
+
       }
     </script>
   </head>
@@ -61,4 +66,5 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
+</html>
 </html>
