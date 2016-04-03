@@ -56,8 +56,7 @@ public class HackerTracker extends Application
                         FontPosture.ITALIC, 15));
             pane.add(nameLabel, 0, 0);
 
-            // Add first timer
-            // TODO load all the previous timers from database
+            // Load all the previous timers from database
             Text name = new Text("Sample"); 
             Text txt = new Text("0:00:00");
             timerTexts.add(txt);
@@ -120,12 +119,12 @@ public class HackerTracker extends Application
                     stop.setOnAction(g -> {
                             String timestring = httime.getTime();
                             txt.setText(timestring);
-                            httime.stop();
-                            
+                            int minutes = httime.stop();
+
                             Firebase fb2 = fb.push();
                             fb2.child("fromJava").setValue(true);
                             fb2.child("name").setValue(timerText);
-                            fb2.child("time").setValue(timestring);
+                            fb2.child("time").setValue(minutes);
 
                             });
 

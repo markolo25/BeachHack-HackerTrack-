@@ -36,14 +36,14 @@ public class HTTimer {
     /*
      * Collects stop time
      *
-     * @return true if successful, false if not
+     * @return minutes elapsed
      */
-    public boolean stop() {
+    public int stop() {
         if (!isGoing) {
-            return false;
+            return 0;
         }
         this.isGoing = false;
-        return true;
+        return this.time;
     }
 
     /*

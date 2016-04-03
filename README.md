@@ -1,8 +1,8 @@
-# BeachHack-HackerTrack-
+# HackerTracker, created at BeachHacks
 ###### Made by: Mark, Nosa, Jenny
 
-HackerTracker allows users to track their productivity across multiple platforms and view data in a  
-digestible manner.
+HackerTracker allows users to track their productivity across multiple platforms and view data in a digestible  
+manner.
 
 ### Desktop Client
 Our Java powered desktop client allows the user to personally track time spent on certain programs.  
