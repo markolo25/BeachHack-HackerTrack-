@@ -12,7 +12,7 @@ import javafx.geometry.*;
 import java.util.*;
 import java.io.*;
 
-import com.firebase.client.*;
+//import com.firebase.client.*;
 
 
 /*
@@ -22,17 +22,10 @@ import com.firebase.client.*;
 public class HackerTracker extends Application
 {
 
-    // Fill colors for GUI
-    private static final Color COLOR_EMPTY = Color.rgb(238, 228, 2);
-    private static final Color COLOR_2 = Color.rgb(255, 202, 195); 
-
-    private static final int FONT_SIZE = 35;
-    private static final int BIG_FONT_SIZE = 45;
-
     private ArrayList<HTTimer> timers = new ArrayList<HTTimer>();
     private ArrayList<Text> timerTexts = new ArrayList<Text>();
 
-    private Firebase fb = new Firebase("https://shining-fire-5186.firebaseio.com/");
+    //private Firebase fb = new Firebase("https://shining-fire-5186.firebaseio.com/");
 
 
     /* Method Name: start
@@ -52,7 +45,7 @@ public class HackerTracker extends Application
             scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
             scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
-            pane.setStyle("-fx-background-color: gold;"); // Background color
+            pane.setStyle("-fx-background-color: #609f96;"); // Background color
             pane.setHgap(10); // Horizontal gap
             pane.setVgap(10); // Vertical gap
             pane.setPadding(new Insets(10, 10, 10, 10));
@@ -66,7 +59,7 @@ public class HackerTracker extends Application
             // Add first timer
             // TODO load all the previous timers from database
             Text name = new Text("Sample"); 
-            Text txt = new Text("0:0:0");
+            Text txt = new Text("0:00:00");
             timerTexts.add(txt);
             Button startButton = new Button("Go");
             Button stopButton = new Button("Stop");
@@ -110,7 +103,7 @@ public class HackerTracker extends Application
                     pane.getChildren().remove(timerName);
 
                     Text txtname = new Text(timerText);
-                    Text txttime = new Text("0:0:0");
+                    Text txttime = new Text("0:00:00");
                     Button start = new Button("Go");
                     Button stop = new Button("Stop");
 
@@ -129,11 +122,11 @@ public class HackerTracker extends Application
                             txt.setText(timestring);
                             httime.stop();
                             
-                            Firebase fb2 = fb.push();
+                          /**  Firebase fb2 = fb.push();
                             fb2.child("fromJava").setValue(true);
                             fb2.child("name").setValue(timerText);
                             fb2.child("time").setValue(timestring);
-
+*/
                             });
 
                     pane.add( txtname, 0, row );

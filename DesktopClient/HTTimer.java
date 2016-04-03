@@ -1,5 +1,3 @@
-import java.util.Date;
-
 /*
  * Timer class to be used by HackerTracker desktop client
  * By: Jenny Wong
@@ -62,7 +60,7 @@ public class HTTimer {
             this.go();
             return formatter(this.time);
         }
-        
+
         return formatter(this.time);
     }
 
@@ -74,16 +72,33 @@ public class HTTimer {
      * @return string time elapsed in new format
      */
     private static String formatter(int seconds) {
+
         int minutes = 0;
         int hours = 0;
+        String ftime = "";
+
         if (seconds >= 60) {
             minutes = seconds/60;
             seconds = seconds%60;
         }
+
+        if (seconds < 10) {
+            ftime = "0";
+        }
+        ftime = ":" + ftime + seconds;
+
+
         if (minutes >= 60) {
             hours = minutes/60;
             minutes = minutes%60;
         }
-        return hours+":"+minutes+":"+seconds;
+
+        ftime = minutes + ftime;
+        if (minutes < 10) {
+            ftime = "0" + ftime;
+        }
+        ftime = hours + ":" + ftime;
+
+        return ftime;
     }
 }
