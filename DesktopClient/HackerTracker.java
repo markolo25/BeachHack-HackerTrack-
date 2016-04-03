@@ -57,6 +57,14 @@ public class HackerTracker extends Application
             pane.add(nameLabel, 0, 0);
 
             // Load all the previous timers from database
+            Query queryRef = fb.orderByChild("time");
+            queryRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                    System.out.println("Key: " +snapshot.getKey()) + " Value: " + snapshot.getValue());
+                }
+            });
+
             Text name = new Text("Sample"); 
             Text txt = new Text("0:00:00");
             timerTexts.add(txt);
