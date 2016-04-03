@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "Hacker",
+  "description": "Tracker",
+  "version": "1.0",
+
+  "browser_action": {
+   "default_icon": "icon.png",
+   "default_popup": "src/popup.html"
+  },
+  "background": {
+    "scripts": ["src/inject.js"]
+  },
+  "permissions": [
+    "http://*/*", 
+    "https://*/*", 
+    "tabs", 
+    "activeTab",
+    "storage" 
+   ]
+}
