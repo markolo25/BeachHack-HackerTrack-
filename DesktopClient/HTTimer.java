@@ -59,17 +59,39 @@ public class HTTimer {
     /*
      * Calculates time elapsed
      *
-     * @return int time elapsed
+     * @return String time elapsed in the following format:
+     *                             [hour]:[minute]:[second]
      */
-    public int getTime() {
+    public String getTime() {
         if (isGoing) {
             this.stop();
             this.time = (int)((endTime.getTime() - startTime.getTime())/1000);
             this.go();
-            return this.time;
+            return formatter(this.time);
         }
         
         this.time = (int)((endTime.getTime() - startTime.getTime())/1000);
-        return this.time;
+        return formatter(this.time);
+    }
+
+
+    /*
+     * Converts minutes to hour:minute:second
+     *
+     * @param seconds - time elapsed
+     * @return string time elapsed in new format
+     */
+    private static String formatter(int seconds) {
+        int minutes = 0;
+        int hours = 0;
+        if (seconds >= 60) {
+            minutes = seconds/60;
+            seconds = seconds%60;
+        }
+        if (minutes >= 60) {
+            hours = minutes/60;
+            minutes = minutes%60;
+        }
+        return hours+":"+minutes+":"+seconds;
     }
 }
