@@ -48,15 +48,11 @@
     ref.orderByChild("time").on("child_added", function(snapshot) {
         snapshot.forEach(function(data) {
              data.addRows([
-
           [snapshot.val().name,  {v: 10000, f: snapshot.val().time}],
-
-        ]);    
-           
+        ]);               
         });
     });
    
-
 });
     });
         var table = new google.visualization.Table(document.getElementById('table_div'));
