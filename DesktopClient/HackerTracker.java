@@ -39,6 +39,13 @@ public class HackerTracker extends Application
     @Override
     public void start(Stage primaryStage)
     {
+    
+    
+int secs = 0;
+int mins = 0; 
+int hrs = 0;
+
+
 
         // Create a grid pane to to hold everything & add to scrollpane so we
         // can scroll if needed
@@ -61,7 +68,11 @@ public class HackerTracker extends Application
         // Add first timer
         int num_timers = 1;
         Text name = new Text("Sample");
-        Text txt = new Text("0:00");
+        
+        
+        
+        Text txt = new Text(hrs + ":" + mins + secs);
+        
         Button startButton = new Button("Go");
         Button stopButton = new Button("Stop");
         pane.add( name, 0, 1 );
@@ -74,8 +85,11 @@ public class HackerTracker extends Application
         // Add a timer button and text field
         Button addTimer = new Button("+");
         TextField timerName = new TextField();
+        TextField tarray = new TextField();
+        
         pane.add( addTimer, 2, num_timers +1);
         pane.add( timerName, 0, num_timers+1);
+        
 
         // Create and register add timer button handler
         addTimer.setOnAction(e -> {
@@ -101,8 +115,25 @@ public class HackerTracker extends Application
             row++;
             pane.add( addTimer, 2, row );
             pane.add( timerName, 0, row );
-
+            
+        	HTTimer httime = new HTTimer(0);
+        
+            timers.add(httime);
+            System.out.println("number of timers " + timers.size());
+    
+            
         });
+        
+        //startButton.setOnAction(e -> {
+         
+         
+        
+        
+        //}
+        
+        
+     
+        
 
         // Create a scene and place it in the stage
         Scene scene = new Scene(scroll);
