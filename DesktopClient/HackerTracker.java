@@ -12,7 +12,7 @@ import javafx.geometry.*;
 import java.util.*;
 import java.io.*;
 
-//import com.firebase.client.*;
+import com.firebase.client.*;
 
 
 /*
@@ -25,7 +25,7 @@ public class HackerTracker extends Application
     private ArrayList<HTTimer> timers = new ArrayList<HTTimer>();
     private ArrayList<Text> timerTexts = new ArrayList<Text>();
 
-    //private Firebase fb = new Firebase("https://shining-fire-5186.firebaseio.com/");
+    private Firebase fb = new Firebase("https://shining-fire-5186.firebaseio.com/");
 
 
     /* Method Name: start
@@ -122,11 +122,11 @@ public class HackerTracker extends Application
                             txt.setText(timestring);
                             httime.stop();
                             
-                          /**  Firebase fb2 = fb.push();
+                            Firebase fb2 = fb.push();
                             fb2.child("fromJava").setValue(true);
                             fb2.child("name").setValue(timerText);
                             fb2.child("time").setValue(timestring);
-*/
+
                             });
 
                     pane.add( txtname, 0, row );
