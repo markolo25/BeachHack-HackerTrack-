@@ -60,6 +60,7 @@ public class HackerTracker extends Application
         pane.add(nameLabel, 0, 0);
 
         // Add first timer
+        // TODO load all the previous timers from database
         Text name = new Text("Sample"); 
         Text txt = new Text("0:00:00");
         timerTexts.add(txt);
@@ -72,8 +73,21 @@ public class HackerTracker extends Application
         pane.add( stopButton, 3, 1);
         timers.add(new HTTimer(0));
 
+        // Set up first timer's button listeners
+        startButton.setOnAction(e -> {
+            HTTimer currTimer = timers.get(0);
+            currTimer.go();
+        });
+        
+        stopButton.setOnAction(e -> {
+            HTTimer currTimer = timers.get(0);
+            txt.setText(currTimer.getTime());
+            currTimer.stop();
+        });
 
-        // Add a timer button and text field
+
+
+        // Add a + timer button and text field
         Button addTimer = new Button("+");
         TextField timerName = new TextField();
         pane.add( addTimer, 2, 2);
@@ -95,34 +109,31 @@ public class HackerTracker extends Application
             Button start = new Button("Go");
             Button stop = new Button("Stop");
 
+        	HTTimer httime = new HTTimer(0);
+            timers.add(httime); 
+            timerTexts.add(txttime);
+
+            // Set up each button listener
+            start.setOnAction(f -> {
+                httime.go();
+            });
+        
+            // TODO push to database when stop is hit
+            stop.setOnAction(g -> {
+                txt.setText(httime.getTime());
+                httime.stop();
+            });
+
             pane.add( txtname, 0, row );
             pane.add( txttime, 1, row );
             pane.add( start, 2, row );
             pane.add( stop, 3, row );
 
             row++;
+            timerName.setText("");
             pane.add( addTimer, 2, row );
             pane.add( timerName, 0, row );
-            
-        	HTTimer httime = new HTTimer(0);
-        
-            timers.add(httime); 
-            timerTexts.add(txttime);
-            
-        });
-
-        // THIS ONLY WORKS FOR THE SAMPLE!!!!!!! TODO TODO TODO
-        startButton.setOnAction(e -> {
-            // NEED TO GET ROW # OF BUTTON CLICKED
-            HTTimer currTimer = timers.get(0);
-            currTimer.go();
-        });
-        
-        stopButton.setOnAction(e -> {
-            // NEED TO GET ROW # OF BUTTON CLICKED
-            HTTimer currTimer = timers.get(0);
-            txt.setText(currTimer.getTime());
-            currTimer.stop();
+                        
         });
  
         // Timer to update timers :)

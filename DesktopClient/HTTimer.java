@@ -8,11 +8,8 @@ public class HTTimer {
 
 
     /* Fields */
-    Date startTime;
-    Date endTime;
     int time;
     boolean isGoing;
-
 
     /*
      * HTTime constructor
@@ -21,8 +18,6 @@ public class HTTimer {
      */
     public HTTimer(int time) {
 
-        this.startTime = null;
-        this.endTime = null;
         this.time = time;
         this.isGoing = false;
     }
@@ -37,7 +32,6 @@ public class HTTimer {
             return false;
         }
         this.isGoing = true;
-        this.startTime = new Date();
         return true;
     }
 
@@ -51,7 +45,6 @@ public class HTTimer {
             return false;
         }
         this.isGoing = false;
-        this.endTime = new Date();
         return true;
     }
 
@@ -63,17 +56,13 @@ public class HTTimer {
      */
     public String getTime() {
 
-        if (startTime == null) {
-            return formatter(this.time);
-        }
         if (isGoing) {
             this.stop();
-            this.time = this.time + (int)((endTime.getTime() - startTime.getTime())/1000);
+            this.time = this.time + 1;
             this.go();
             return formatter(this.time);
         }
         
-        this.time = this.time + (int)((endTime.getTime() - startTime.getTime())/1000);
         return formatter(this.time);
     }
 
