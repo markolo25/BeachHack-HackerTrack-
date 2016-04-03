@@ -27,6 +27,8 @@ public class HackerTracker extends Application
     private static final int FONT_SIZE = 35;
     private static final int BIG_FONT_SIZE = 45;
 
+    private ArrayList<HTTimer> timers = new ArrayList<HTTimer>();
+
 
 /* Method Name: start
  * Purpose: Create graphical user interface. Overrides start in Application 
@@ -66,6 +68,7 @@ public class HackerTracker extends Application
         pane.add( txt, 1, 1 );
         pane.add( startButton, 2, 1);
         pane.add( stopButton, 3, 1);
+        timers.add(new HTTimer(0));
 
 
         // Add a timer button and text field
