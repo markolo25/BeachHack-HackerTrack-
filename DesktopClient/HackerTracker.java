@@ -1,8 +1,3 @@
-/*
- * Self-reported productivity timer
- * By: Jenny Wong
- */
-
 import javafx.application.*;
 import javafx.scene.control.*;
 import javafx.scene.*;
@@ -17,6 +12,11 @@ import javafx.geometry.*;
 import java.util.*;
 import java.io.*;
 
+
+/*
+ * Self-reported productivity timer
+ * By: Jenny Wong
+ */
 public class HackerTracker extends Application
 {
 
@@ -28,6 +28,7 @@ public class HackerTracker extends Application
     private static final int BIG_FONT_SIZE = 45;
 
     private ArrayList<HTTimer> timers = new ArrayList<HTTimer>();
+    private ArrayList<Text> timerTexts = new ArrayList<Text>();
 
 
 /* Method Name: start
@@ -39,13 +40,6 @@ public class HackerTracker extends Application
     @Override
     public void start(Stage primaryStage)
     {
-    
-    
-int secs = 0;
-int mins = 0; 
-int hrs = 0;
-
-
 
         // Create a grid pane to to hold everything & add to scrollpane so we
         // can scroll if needed
@@ -66,15 +60,12 @@ int hrs = 0;
         pane.add(nameLabel, 0, 0);
 
         // Add first timer
-        int num_timers = 1;
-        Text name = new Text("Sample");
-        
-        
-        
-        Text txt = new Text(hrs + ":" + mins + secs);
-        
+        Text name = new Text("Sample"); 
+        Text txt = new Text("0:00:00");
+        timerTexts.add(txt);
         Button startButton = new Button("Go");
         Button stopButton = new Button("Stop");
+
         pane.add( name, 0, 1 );
         pane.add( txt, 1, 1 );
         pane.add( startButton, 2, 1);
@@ -85,15 +76,12 @@ int hrs = 0;
         // Add a timer button and text field
         Button addTimer = new Button("+");
         TextField timerName = new TextField();
-        TextField tarray = new TextField();
-        
-        pane.add( addTimer, 2, num_timers +1);
-        pane.add( timerName, 0, num_timers+1);
+        pane.add( addTimer, 2, 2);
+        pane.add( timerName, 0, 2);
         
 
         // Create and register add timer button handler
         addTimer.setOnAction(e -> {
-
 
             int row = pane.getRowIndex(addTimer);
 
@@ -103,7 +91,7 @@ int hrs = 0;
             pane.getChildren().remove(timerName);
 
             Text txtname = new Text(timerText);
-            Text txttime = new Text("0:00");
+            Text txttime = new Text("0:00:00");
             Button start = new Button("Go");
             Button stop = new Button("Stop");
 
@@ -118,30 +106,48 @@ int hrs = 0;
             
         	HTTimer httime = new HTTimer(0);
         
-            timers.add(httime);
-            System.out.println("number of timers " + timers.size());
-    
+            timers.add(httime); 
+            timerTexts.add(txttime);
             
         });
+
+        // THIS ONLY WORKS FOR THE SAMPLE!!!!!!! TODO TODO TODO
+        startButton.setOnAction(e -> {
+            // NEED TO GET ROW # OF BUTTON CLICKED
+            HTTimer currTimer = timers.get(0);
+            currTimer.go();
+        });
         
-        //startButton.setOnAction(e -> {
-         
-         
-        
-        
-        //}
-        
-        
-     
-        
+        stopButton.setOnAction(e -> {
+            // NEED TO GET ROW # OF BUTTON CLICKED
+            HTTimer currTimer = timers.get(0);
+            txt.setText(currTimer.getTime());
+            currTimer.stop();
+        });
+ 
+        // Timer to update timers :)
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+
+                for (int i = 0; i < timers.size(); i++) {
+                    HTTimer curr = timers.get(i);
+                    timerTexts.get(i).setText(curr.getTime());
+                }
+            }
+        }, 0, 1000);
+
+
 
         // Create a scene and place it in the stage
         Scene scene = new Scene(scroll);
-        primaryStage.setTitle("Hacker Tracker Timer"); // Set the stage title
+        primaryStage.setTitle("HackerTracker Timer"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage
 
         scroll.requestFocus();
+
     }
 
 

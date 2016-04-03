@@ -1,10 +1,9 @@
+import java.util.Date;
+
 /*
  * Timer class to be used by HackerTracker desktop client
  * By: Jenny Wong
  */
-
-import java.util.Date;
-
 public class HTTimer {
 
 
@@ -63,14 +62,18 @@ public class HTTimer {
      *                             [hour]:[minute]:[second]
      */
     public String getTime() {
+
+        if (startTime == null) {
+            return formatter(this.time);
+        }
         if (isGoing) {
             this.stop();
-            this.time = (int)((endTime.getTime() - startTime.getTime())/1000);
+            this.time = this.time + (int)((endTime.getTime() - startTime.getTime())/1000);
             this.go();
             return formatter(this.time);
         }
         
-        this.time = (int)((endTime.getTime() - startTime.getTime())/1000);
+        this.time = this.time + (int)((endTime.getTime() - startTime.getTime())/1000);
         return formatter(this.time);
     }
 
