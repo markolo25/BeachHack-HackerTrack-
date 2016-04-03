@@ -62,7 +62,7 @@ public class HackerTracker extends Application
         // Add first timer
         // TODO load all the previous timers from database
         Text name = new Text("Sample"); 
-        Text txt = new Text("0:00:00");
+        Text txt = new Text("0:0:0");
         timerTexts.add(txt);
         Button startButton = new Button("Go");
         Button stopButton = new Button("Stop");
@@ -92,6 +92,7 @@ public class HackerTracker extends Application
         TextField timerName = new TextField();
         pane.add( addTimer, 2, 2);
         pane.add( timerName, 0, 2);
+        pane.setColumnSpan(timerName, 2);
         
 
         // Create and register add timer button handler
@@ -105,7 +106,7 @@ public class HackerTracker extends Application
             pane.getChildren().remove(timerName);
 
             Text txtname = new Text(timerText);
-            Text txttime = new Text("0:00:00");
+            Text txttime = new Text("0:0:0");
             Button start = new Button("Go");
             Button stop = new Button("Stop");
 
