@@ -1,50 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
-	<html>
-	<body bgcolor="#">
 
-    <title>hacker tracker</title>
+    <html>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <body bgcolor="#">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+        <title>hacker tracker</title>
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
+</head>
+
+<body>
     <h1><font face="verdana" color="BLUE">Hacker Tracker</font></h1>
-	<!--<font size="3" color="red">This is some text!</font>-->
-   
+    <!--<font size="3" color="red">This is some text!</font>-->
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['table']});
+
+    <head>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['table']});
       google.charts.setOnLoadCallback(drawTable);
       function drawTable() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'ACTIVITY');
         data.addColumn('number', 'TIME');
         /*data.addColumn('boolean', 'Full Time Employee');*/
-        data.addRows([
-          ['Facebook.com',  {v: 10000, f: '160 minutes'}],
-          ['Reddit.com',   {v:8000,   f: '94 minutes'}],
-          ['Match.com', {v: 12500, f: '35 minutes'}],
-          ['SomePornSite.com',   {v: 7000,  f: '270 minutes'}]
-        ]);
+         <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js">
+           var ref = new Firebase("https://shining-fire-5186.firebaseio.com/");
+    ref.orderByChild("time").on("child_added", function(snapshot) {
+        snapshot.forEach(function(data) {
+             data.addRows([
+
+          [snapshot.val().name,  {v: 10000, f: snapshot.val().time}],
+
+        ]);    
+           
+        });
+    });
+   
+
+});
+    });
         var table = new google.visualization.Table(document.getElementById('table_div'));
         table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
 
@@ -55,16 +69,20 @@
 		"background-color:lightgrey;"      
 
       }
-    </script>
-  </head>
-  <body>
-    <div id="table_div"></div>
-  </body>
-</html>
+        </script>
+    </head>
+
+    <body>
+        <div id="table_div"></div>
+    </body>
+
+    </html>
 
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-  </body>
+</body>
+
 </html>
+
 </html>
