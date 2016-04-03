@@ -43,7 +43,7 @@
         data.addColumn('string', 'ACTIVITY');
         data.addColumn('number', 'TIME');
         /*data.addColumn('boolean', 'Full Time Employee');*/
-         <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js">
+         <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
            var ref = new Firebase("https://shining-fire-5186.firebaseio.com/");
     ref.orderByChild("time").on("child_added", function(snapshot) {
         snapshot.forEach(function(data) {
