@@ -6,10 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
-	<html>
-	<body bgcolor="#">
+<body background="http://i63.tinypic.com/2rr9z40.jpg"></body>
 
-    <title>hacker tracker</title>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-image: url("http://i63.tinypic.com/2rr9z40.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+</style>
+</head>
+<body>
+
+
+</body>
+</html>
+
+
+
+<title>HACKER TRACK</title>
+
+<!--<div style='position:absolute;z-index:0;left:0;top:250;width:100%;height:100%'>
+  <img src='https://41.media.tumblr.com/22c1ce3c9df349c867f19c8d4255d872/tumblr_o51ql29L1z1ukofkbo1_r2_1280.jpg' style='width:100%;height:100%' alt='[]' />
+</div>-->
+
+	<html>
+	<body bgcolor="#FFFFFF">
+
+    
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +49,33 @@
     <![endif]-->
   </head>
   <body>
-    <h1><font face="verdana" color="PINK">Hacker Tracker</font></h1>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+    <center><h1><font face="verdana" color="PINK" size = "36">Hacker Tracker</font></h1></center>
 	<!--<font size="3" color="red">This is some text!</font>-->
    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -40,19 +93,63 @@
         data.addColumn('number', 'TIME');
         /*data.addColumn('boolean', 'Full Time Employee');*/
         data.addRows([
-          ['Facebook.com',  {v: 10000, f: '160 minutes'}],
-          ['Reddit.com',   {v:8000,   f: '94 minutes'}],
-          ['Match.com', {v: 12500, f: '35 minutes'}],
-          ['SomePornSite.com',   {v: 7000,  f: '270 minutes'}]
-        ]);
+          ['Facebook.com',  { f: '160 minutes'}],
+          ['Microsoft Word',   {f: '94 minutes'}],
+          ['Reddit.com', {f: '35 minutes'}],
+          ['Tumblr.com',   {f: '270 minutes'}]
+			
+			]);
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+
+        data.addRows([
+          ['Eclipse',  { f:'300 minutes'}],
+          ['Twitter.com',   {f: '92 minutes'}],
+          ['WorldstarHipHop.com', {f: '50 minutes'}],
+          ['Microsoft Power Point',   {f: '35 minutes'}]
+			
+			]);
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+
+
+        data.addRows([
+          ['youtube.com',  { f: '45 minutes'}],
+          ['Xcode',   {f: '220 minutes'}],
+          ['TextWrangler', {f: '130 minutes'}],
+          ['Forbes.com',   {f: '67 minutes'}]
+			
+			]);
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+
+        data.addRows([
+          ['App Store',  { f: '14 minutes'}],
+          ['Spotify',   {f: '260 minutes'}],
+          ['Pandora.com', {f: '137 minutes'}],
+          ['Gmail.com',   {f: '408 minutes'}]
+			
+			]);
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+
+          data.addRows([
+          ['Dictionary.com',  { f: '14 minutes'}],
+          ['Wordpress.com',   {f: '244 minutes'}],
+          ['Adobe Photoshop',   {f: '32 minutes'}],
+          ['Audacity',   {f: '540 minutes'}],
+          
+          
+			
+			]);
         var table = new google.visualization.Table(document.getElementById('table_div'));
         table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
 
 
 
-		dataTable.setCell(22, 2, 15, 'Fifteen', {style: 'font-style:bold; font-size:22px;'})  
-
+		dataTable.setCell(22, 2, 15, 'Fifteen', {style: 'font-style:bold; font-size:22px;'})
 		"background-color:lightgrey;"      
+
 
       }
     </script>
